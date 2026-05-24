@@ -1,5 +1,5 @@
 :root {
-  --bg: #090b10;
+  --bg: #000000;
   --surface: rgba(20, 24, 36, 0.95);
   --surface-strong: rgba(15, 18, 28, 0.98);
   --border: rgba(255, 255, 255, 0.08);
@@ -23,9 +23,7 @@ body {
   min-height: 100%;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at top left, rgba(241, 143, 4, 0.16), transparent 22%),
-    radial-gradient(circle at bottom right, rgba(123, 77, 255, 0.18), transparent 18%),
-    linear-gradient(180deg, #05060d 0%, #0a0d16 100%);
+  background: #000000;
 }
 
 button,
@@ -34,9 +32,31 @@ select {
   font: inherit;
 }
 
+.global-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px;
+}
+
 button {
   border: none;
   cursor: pointer;
+}
+
+button:disabled,
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 .app-shell {
@@ -215,6 +235,225 @@ button {
   padding: 28px;
   display: grid;
   gap: 30px;
+}
+
+.legal-shell {
+  min-height: 100vh;
+  padding: 32px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, rgba(241, 143, 4, 0.08), transparent 42%), #05060d;
+}
+
+.legal-panel {
+  width: min(100%, 980px);
+  border-radius: 32px;
+  border: 1px solid var(--border);
+  background: rgba(10, 12, 18, 0.96);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.legal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 36px 40px 0;
+}
+
+.legal-kicker {
+  display: inline-flex;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(241, 143, 4, 0.1);
+  color: #f8b46f;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.legal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.legal-body {
+  padding: 30px 40px 42px;
+  display: grid;
+  gap: 22px;
+}
+
+.legal-doc {
+  padding: 22px 24px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  overflow-x: auto;
+}
+
+.legal-doc pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.compliance-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+.compliance-table thead {
+  background: rgba(241, 143, 4, 0.08);
+}
+
+.compliance-table th {
+  padding: 14px;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.compliance-table td {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.compliance-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.legal-doc h3 {
+  margin: 24px 0 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.legal-doc h4 {
+  margin: 16px 0 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.legal-doc p {
+  margin: 0 0 14px;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.critical-mandate {
+  padding: 18px 20px;
+  border-radius: 16px;
+  border-left: 4px solid var(--accent);
+  background: rgba(241, 143, 4, 0.08);
+  margin: 18px 0;
+}
+
+.critical-mandate p {
+  margin: 0;
+  color: var(--text);
+}
+
+.document-footer {
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  margin-top: 24px;
+}
+
+.document-footer p {
+  margin: 10px 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.document-footer p:last-child {
+  margin-bottom: 0;
+}
+
+.confidential {
+  text-align: center;
+  margin-top: 14px !important;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+
+
+.legal-section {
+  padding: 22px 24px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.legal-section h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.legal-section p,
+.legal-section ul,
+.legal-note,
+.checkbox-field span {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.legal-section ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.checkbox-field input {
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.legal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.legal-note {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .section {
