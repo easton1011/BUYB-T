@@ -193,7 +193,7 @@ function saveRedirectTarget() {
 }
 
 function getRedirectTarget() {
-  return sessionStorage.getItem(REDIRECT_KEY) || 'index.html';
+  return sessionStorage.getItem(REDIRECT_KEY) || 'overview.html';
 }
 
 function clearRedirectTarget() {
@@ -202,7 +202,7 @@ function clearRedirectTarget() {
 
 function requireAuth() {
   const pageName = getPageName();
-  if (pageName === 'login.html') {
+  if (pageName === 'login.html' || pageName === 'index.html' || pageName === 'btc-compliance.html') {
     return;
   }
   if (!isAuthenticated()) {
@@ -258,6 +258,35 @@ function handleLoginPage() {
   });
 }
 
+function handleLegalConsent() {
+  const contractCheckbox = document.querySelector('#contract-accept');
+  const complianceCheckbox = document.querySelector('#compliance-accept');
+  const contractButton = document.querySelector('#next-to-compliance');
+  const agreeButton = document.querySelector('#agree-to-login');
+
+  if (contractCheckbox && contractButton) {
+    contractCheckbox.addEventListener('change', () => {
+      contractButton.disabled = !contractCheckbox.checked;
+    });
+    contractButton.addEventListener('click', () => {
+      if (contractCheckbox.checked) {
+        window.location.href = 'btc-compliance.html';
+      }
+    });
+  }
+
+  if (complianceCheckbox && agreeButton) {
+    complianceCheckbox.addEventListener('change', () => {
+      agreeButton.disabled = !complianceCheckbox.checked;
+    });
+    agreeButton.addEventListener('click', () => {
+      if (complianceCheckbox.checked) {
+        window.location.href = 'login.html';
+      }
+    });
+  }
+}
+
 function populateProfileFromSession() {
   if (!isAuthenticated()) {
     return;
@@ -283,6 +312,7 @@ function attachLogoutHandlers() {
 window.addEventListener('DOMContentLoaded', () => {
   requireAuth();
   handleLoginPage();
+  handleLegalConsent();
   populateProfileFromSession();
   attachLogoutHandlers();
   addSparkline();

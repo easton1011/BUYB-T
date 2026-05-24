@@ -3,7 +3,7 @@ const path = require('path');
 const { chromium } = require('playwright');
 
 const pages = [
-  { file: 'index.html', label: 'overview' },
+  { file: 'overview.html', label: 'overview' },
   { file: 'assets.html', label: 'assets' },
   { file: 'pnl.html', label: 'pnl' },
   { file: 'trade.html', label: 'trade' },
